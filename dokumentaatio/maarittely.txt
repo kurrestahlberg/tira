@@ -1,0 +1,25 @@
+Määrittelydokumentti
+
+1) Työn päätarkoitus on toteuttaa Huffman-koodaus. Sen toteutukseen tarvitaan ainakin
+binääripuu. Tulen toteutuksessani kokeilemaan erilaisia ratkaisuja joten lopullisessa
+saattaa olla muitakin tietorakenteita.
+
+2) Huffman-koodauksen perusidea on muodostaa pakattavan datan merkistöstä esiintymis-
+todennäköisyyksillä painotettu binääripuu joten binääripuu on pakollinen. Puun muodostus-
+vaiheessa voidaan käyttää erilaisia jono- ja puuvirityksiä mutta tarkka lopullinen
+toteutus selvinnee vasta kokeilemalla.
+
+3) Ohjelma saa syötteikseen pakattavan tiedoston nimen sekä mahdollisia algoritmin
+toimintaan vaikuttavia parametreja. Ainakin painotuskertoimien valinta ja mahdollisesti
+pakkausblokin koko mikäli päädyn toteuttamaan blokkijakoisen version algoritmista.
+
+4) Aika- ja tilatavoitteet ovat aika pitkälti epärelevantteja sillä suurin työ on puun
+rakentamisessa joka toisaalta tehdään hyvin pienellä syötteellä (pelkkä merkistö) 
+suhteessa varsinaisen datan määrään. Pakkaukseen menee siis puun
+muodostamisjärjestelmästä riippumatta yhteensä O(n) ja purku sujuu yhtä kätevästi.
+Tilaakaan ei tarvita enempää kuin merkistön koko 
+kertaa joku vakiomäärä joka puuta varten tarvitaan, sekä prioriteettijonon tarvitsema
+tila. Edelleen, merkistö on verrattain pieni suhteessa dataan joten tämä tilavaade on
+merkityksetön.
+
+5) Lähde: http://en.wikipedia.org/wiki/Huffman_coding
