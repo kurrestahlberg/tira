@@ -24,6 +24,7 @@ int main(int argc, char * const argv[]) {
 	
 	Tree tree;
 	tree.generateTree(data, size);
+	tree.dump();
 	
 	delete [] data;
 	

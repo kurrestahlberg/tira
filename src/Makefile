@@ -1,8 +1,8 @@
 CC=g++
 LDFLAGS=
-CXXFLAGS=-Wall -c
+CXXFLAGS=-Wall -c -g3 -O0
 
-SOURCES=main.cpp treenode.cpp tree.cpp
+SOURCES=main.cpp treenode.cpp tree.cpp priorityqueue.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=huffman
 
