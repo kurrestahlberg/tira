@@ -28,7 +28,7 @@ SUITE(PriorityQueueTests) {
 	TEST(MultiItemPriorityQueueTest)
 	{
 		PriorityQueue queue;
-		int testweights[10] = {10, 12, 3, 6, 2, 22, 41, 50, 91515135423, 10};
+		int testweights[10] = {10, 12, 3, 6, 2, 22, 41, 50, 915151, 10};
 		int sortedorder[10] = {4, 2, 3, 0, 9, 1, 5, 6, 7, 8};
 		TreeNode ** nodes = new TreeNode*[10];
 		for(int i = 0; i < 10; i++) {

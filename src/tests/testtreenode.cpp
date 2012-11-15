@@ -3,8 +3,8 @@
 
 TEST(TreeNodeTest)
 {
-	char testchar = 'a';
-	int testweight = 10;
+	unsigned char testchar = 'a';
+	unsigned int testweight = 10;
 	TreeNode node(testchar, testweight);
 	
 	CHECK_EQUAL(node.value, testchar);
