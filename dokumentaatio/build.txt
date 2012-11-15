@@ -1,0 +1,15 @@
+Käännös linux/mac -konsolista: 
+
+cd tira/src
+make
+
+ajettava tiedosto on nimeltään huffman
+
+Testien käännös:
+
+cd tira/UnitTest++
+make
+cd ../src
+make test
+
+UnitTest++ tarvitsee tietysti kääntää vain ensimmäisellä kerralla.
