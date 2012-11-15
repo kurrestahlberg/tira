@@ -16,7 +16,7 @@ Tree::~Tree()
 
 }
 
-void Tree::generateTree(char * data, int size) 
+void Tree::generateTree(const char * data, int size) 
 {
 	int * characterCounts = countCharacters(data, size);
 	
@@ -53,7 +53,7 @@ TreeNode * Tree::combineBranches(TreeNode * node1, TreeNode * node2)
 	return newNode;
 }
 
-int * Tree::countCharacters(char * data, int size) 
+int * Tree::countCharacters(const char * data, int size) 
 {
 	int * characterCounts = new int[256];
 	
