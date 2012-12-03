@@ -3,7 +3,7 @@ LDFLAGS=
 CXXFLAGS=-Wall -c -g3 -O0 -I../UnitTest++/src
 TEST_LDFLAGS=$(LDFLAGS) -L../UnitTest++/ -lUnitTest++
 
-COMMON_SOURCES=treenode.cpp tree.cpp priorityqueue.cpp
+COMMON_SOURCES=treenode.cpp tree.cpp priorityqueue.cpp huffman.cpp
 
 SOURCES=$(COMMON_SOURCES) main.cpp
 OBJECTS=$(SOURCES:.cpp=.o)

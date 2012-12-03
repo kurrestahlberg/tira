@@ -1,6 +1,10 @@
 #ifndef __TREE_H__
 #define __TREE_H__
 
+#include <iostream>
+
+using namespace std;
+
 class TreeNode;
 
 class Tree {
@@ -10,12 +14,27 @@ public:
 	~Tree();
 	void generateTree(const char * data, int size);
 	
-	void dump();
+	int getLeafCount();
+	int getPackedSize();
+	
+	int writeTree(char * data);
+	int pack(const char * input, int inputSize, char * output);
+	
+	void writeTree(ostream & stream);
+	void pack(const char * input, int inputSize, ostream & stream);
+	
+	int readTree(const unsigned char * data, int entryCount);
+	int unpack(const char * data, char * outputData, int outputDataSize);
+	
+	int dump();
 	
 private:
-	TreeNode * root;
+	TreeNode * m_root;
+	TreeNode * m_leafNodes[256];
+	int m_characterCounts[256];
+	int m_leafCount;
 	
-	int * countCharacters(const char * data, int size);
+	void countCharacters(const char * data, int size, int * counts);
 	
 	TreeNode * combineBranches(TreeNode * node1, TreeNode * node2);
 	
