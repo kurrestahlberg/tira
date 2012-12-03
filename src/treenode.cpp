@@ -10,6 +10,12 @@ TreeNode::TreeNode(char _value, int _weight):
 {
 }
 
+TreeNode::TreeNode():
+	value(0), weight(0), left(0L), right(0L),
+	bits(0), bitCount(0)
+{
+}
+
 TreeNode::~TreeNode() 
 {
 	if(left) delete left;
@@ -23,8 +29,8 @@ void TreeNode::figureOutBits(unsigned int bits, int count)
 
 	if(left && right) 
 	{
-		left->figureOutBits(bits, count + 1);
-		right->figureOutBits(bits | (1 << count), count + 1);
+		left->figureOutBits(bits << 1, count + 1);
+		right->figureOutBits((bits << 1) | 1, count + 1);
 	}
 }
 
@@ -33,6 +39,10 @@ int TreeNode::print()
 {
 	if(!left && !right) 
 	{		
+		for(int i = 31; i >= 0; i--)
+		{
+			cout << ((bits >> i) & 1);
+		}
 		
 		int bitcount = (bitCount * weight);
 		cout << " " << value << "(" << weight << ", " << bitCount << ")" << endl;
@@ -43,7 +53,7 @@ int TreeNode::print()
 	if(!left || !right)
 	{
 		cout << "TREE IS NOT CORRECT!" << endl;
-		return -1;
+		return 0;
 	}
 	
 	int rv = left->print();
@@ -54,10 +64,16 @@ int TreeNode::print()
 
 TreeNode * TreeNode::getChild(unsigned int bits)
 {
-	if(value > 0) return this;
+	if(!left && !right) return this;
 	
-	if(bits & 1) return right->getChild(bits >> 1);
-	else return left->getChild(bits >> 1);
+	if(!left || !right)
+	{
+		cout << "TREE IS BROKEN!" << endl;
+		return this;
+	}
+	
+	if(bits & 0x80000000) return right->getChild(bits << 1);
+	else return left->getChild(bits << 1);
 }
 
 

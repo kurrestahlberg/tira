@@ -4,9 +4,10 @@
 class TreeNode {
 public:
 	TreeNode(char _value, int _weight);
+	TreeNode();
 	~TreeNode();
 	
-	int print(unsigned int bits);
+	int print();
 	void figureOutBits(unsigned int bits, int count);
 	
 	TreeNode * getChild(unsigned int bits);

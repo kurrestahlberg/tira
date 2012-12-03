@@ -20,8 +20,8 @@ public:
 	int writeTree(char * data);
 	int pack(const char * input, int inputSize, char * output);
 	
-	void writeTree(ostream & stream);
-	void pack(const char * input, int inputSize, ostream & stream);
+	int writeTree(ostream & stream);
+	int pack(const char * input, int inputSize, ostream & stream);
 	
 	int readTree(const unsigned char * data, int entryCount);
 	int unpack(const char * data, char * outputData, int outputDataSize);

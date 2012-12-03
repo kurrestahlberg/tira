@@ -22,8 +22,23 @@ int main(int argc, char * const argv[]) {
 			return -2;
 		}
 		
-		cout << "Unpacking " << argv[2] << endl;
+		string str(argv[2]);
+		if(str.rfind(".huf") != str.length() - 4)
+		{
+			cout << "Invalid file!" << endl;
+			return -3;
+		}
+		
+		str = str.substr(0, str.length() - 4);
+		
+		cout << "Unpacking " << argv[2] << " to " << str.c_str() << endl;
 		Huffman huffman(argv[2]);
+
+		ofstream file;
+		file.open(str.c_str(), ios::out | ios::binary | ios::ate);
+		file.write(huffman.getUnpackedData(), huffman.getUnpackedDataSize());
+		file.close();
+
 	}
 	else
 	{

@@ -16,12 +16,13 @@ public:
 	unsigned int unpackedSize;
 };
 
-Huffman::Huffman(const char * data, int dataSize) :
+Huffman::Huffman(char * data, int dataSize) :
 	m_unpackedData(data), m_dataSize(dataSize)
 {
 	m_tree.generateTree(data, dataSize);
 }
-Huffman::Huffman(std::string filename)
+Huffman::Huffman(std::string filename):
+	m_unpackedData(0L), m_dataSize(0)
 {
 	unpack(filename);	
 }
@@ -38,7 +39,7 @@ void Huffman::unpack(std::string& filename)
 	
 	int size = 0;
 	size = (int)file.tellg();
-	char * data = new char[size];
+	char * data = new char[size + 4];
 
 	file.seekg(0, ios::beg);
 	file.read(data, size);
@@ -53,9 +54,14 @@ void Huffman::unpack(std::string& filename)
 	
 	cout << "Tree entries: " << hdr->treeEntryCount << ", unpackedSize: " << hdr->unpackedSize << endl;
 	
-	m_tree.readTree((unsigned char *)(data + sizeof(*hdr)), hdr->treeEntryCount);
+	int treeSize = m_tree.readTree((unsigned char *)(data + sizeof(*hdr)), hdr->treeEntryCount);
 	
-	m_tree.dump();
+	//m_tree.dump();
+	
+	m_dataSize = hdr->unpackedSize;
+	m_unpackedData = new char[m_dataSize];
+	
+	m_tree.unpack((const char *)(data + sizeof(*hdr) + treeSize), m_unpackedData, m_dataSize); 
 	
 }
 	
@@ -72,13 +78,29 @@ void Huffman::writeToFile(std::string& filename)
 	header.treeEntryCount = m_tree.getLeafCount();
 	header.unpackedSize = m_dataSize;
 	
-	m_tree.dump();
+	//m_tree.dump();
 	
 	cout << "Tree entries: " << header.treeEntryCount << ", unpackedSize: " << m_dataSize << endl;
 	
 	file.write((const char *)&header, sizeof(header));
-	m_tree.writeTree(file);
-	m_tree.pack(m_unpackedData, m_dataSize, file);
+	int treesize = m_tree.writeTree(file);
+	
+	int packedSize = m_tree.pack(m_unpackedData, m_dataSize, file);
+	
+	float pp = ((float)(packedSize + treesize + sizeof(header)) / (float)m_dataSize) * 100.0f;
+	
+	cout << "Tree size: " << treesize << ", packed data size: " << packedSize << 
+		", pack percent: " << pp << endl;
 	
 	file.close();
 }
+
+const char * Huffman::getUnpackedData()
+{
+	return m_unpackedData;
+}
+int Huffman::getUnpackedDataSize()
+{
+	return m_dataSize;
+}
+

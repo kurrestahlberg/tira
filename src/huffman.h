@@ -7,15 +7,18 @@
 class Huffman
 {
 public:
-	Huffman(const char * data, int dataSize);
+	Huffman(char * data, int dataSize);
 	Huffman(std::string filename);
 	
 	void writeToFile(std::string & filename);
 	
 	void unpack(std::string & filename);
 	
+	const char * getUnpackedData();
+	int getUnpackedDataSize();
+	
 private:
-	const char * m_unpackedData;
+	char * m_unpackedData;
 	int m_dataSize;
 	
 	Tree m_tree;
