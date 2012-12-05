@@ -7,7 +7,8 @@
 
 using namespace std;
 
-Tree::Tree() 
+Tree::Tree() :
+	m_root(0L)
 {
 }
 

@@ -17,7 +17,7 @@ TEST_EXECUTABLE=huffman_test
 all: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 	
 .cpp.o:
 	$(CC) $(CXXFLAGS) $< -o $@
@@ -29,5 +29,5 @@ test: $(TEST_SOURCES) $(TEST_EXECUTABLE)
 	./huffman_test
 	
 $(TEST_EXECUTABLE): $(TEST_OBJECTS)
-	$(CC) $(TEST_LDFLAGS) $(TEST_OBJECTS) -o $@
+	$(CC) $(TEST_OBJECTS) $(TEST_LDFLAGS) -o $@
 	

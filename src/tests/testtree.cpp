@@ -13,21 +13,23 @@ protected:
 	int * cc(const char * data, int size)
 	{
 		Tree tree;
-		return tree.countCharacters(data, size);
+		int * characterCounts = new int[256]; 
+		tree.countCharacters(data, size, characterCounts);
+		return characterCounts;
 	}
 };
 
 TEST_FIXTURE(TreeTester, BranchCombineTest)
 {
-	TreeNode node1('a', 10);
-	TreeNode node2('b', 11);
+	TreeNode *node1 = new TreeNode('a', 10);
+	TreeNode *node2 = new TreeNode('b', 11);
 	
-	TreeNode * newNode = cb(&node1, &node2);
+	TreeNode * newNode = cb(node1, node2);
 	
-	CHECK(newNode != &node1);
-	CHECK(newNode != &node2);
-	CHECK_EQUAL(&node1, newNode->left);
-	CHECK_EQUAL(&node2, newNode->right);
+	CHECK(newNode != node1);
+	CHECK(newNode != node2);
+	CHECK_EQUAL(node1, newNode->left);
+	CHECK_EQUAL(node2, newNode->right);
 	
 	delete newNode;
 }
