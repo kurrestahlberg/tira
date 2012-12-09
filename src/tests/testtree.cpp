@@ -50,3 +50,24 @@ TEST_FIXTURE(TreeTester, CharacterCountTest)
 	
 	delete [] counts;
 }
+
+TEST(TreeGetLeafCountTest)
+{
+	const char * chars = "abceff";
+	Tree tree;
+	tree.generateTree(chars, 6);
+	
+	int rv = tree.getLeafCount();
+	CHECK_EQUAL(5, rv);
+	
+}
+
+TEST(TreeGetPackedSizeTest)
+{
+	const char * chars = "abceff";
+	Tree tree;
+	tree.generateTree(chars, 6);
+	
+	int rv = tree.getPackedSize();
+	CHECK_EQUAL(4, rv);
+}

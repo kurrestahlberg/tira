@@ -43,7 +43,9 @@ private:
 	char * m_unpackedData;
 	int m_dataSize;
 	
-	Tree m_tree;	
+	Tree m_tree;
+	
+	friend class TestHuffman;
 };
 
 #endif

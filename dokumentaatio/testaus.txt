@@ -1,0 +1,7 @@
+TESTAUS
+
+Ohjelman testaamisen käytetään pääasiassa yksikkötestausta UnitTest++-kirjaston avulla.
+Myös kokonaisuuden toimivuus on tarkistettu tasaisin väliajoin pakkaamalla ja purkamalla
+itse ohjelma ja tarkistamalla sen toimivuus.
+
+Yksikkötestit voi ajaa ajamalla src-hakemistossa komento 'make test'
