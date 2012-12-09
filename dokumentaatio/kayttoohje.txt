@@ -1,0 +1,28 @@
+Käännös linux/mac -konsolista, pitäisi toimia myös windowsin cygwin-ympäristössä: 
+
+cd tira/src
+make
+
+ajettava tiedosto on nimeltään huffman
+
+Tiedoston pakkaus:
+
+./huffman <pakattava_tiedosto>
+
+Ohjelma tuottaa uuden tiedoston jonka nimi on annetun tiedoston nimi ja lisänä pääte .huf
+
+Tiedoston purkaminen:
+
+./huffman -x <purettava_tiedosto.huf>
+
+Ohjelma tuottaa tiedoston jonka nimi on annetun tiedoston nimi ilman .huf-päätettä. 
+Ainoastaan .huf-päätteisiä tiedostoja otetaan syötteeksi -x -parametrin kanssa.
+
+Testien käännös:
+
+cd tira/UnitTest++
+make
+cd ../src
+make test
+
+UnitTest++ tarvitsee tietysti kääntää vain ensimmäisellä kerralla

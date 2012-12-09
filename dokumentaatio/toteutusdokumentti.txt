@@ -1,0 +1,30 @@
+RAKENNE
+
+Ohjelma on rakenteeltaan yksinkertainen; pääkomponentteina Huffman-toteutukseen viritelty
+binääripuu (Tree ja sen solmuluokka TreeNode), puun muodostamisessa käytetty
+prioriteettijono (PriorityQueue) sekä toiminnallinen pääluokka (Huffman). Pääluokka
+hallinnoi muita ja hoitaa tiedostojen kirjoittamisen ja niistä lukemisen.
+
+VAATIVUUDET
+
+Aika- ja tilavaativuudet ovat aika pitkälti epärelevantteja sillä suurin työ on puun
+rakentamisessa joka toisaalta tehdään hyvin pienellä syötteellä (pelkkä merkistö) 
+suhteessa varsinaisen datan määrään. Pakkaus toimii siten, että ensin lasketaan datasta
+yksittäisen tavun esiintymismäärä josta muodostetaan binääripuu. Puun avulla saadaan 
+pakkaukseen käytettävät bitit ja sitten vain muodostetaan pakattu data korvaamalla
+alkuperäiset bitit puusta saatavilla. Pakkaukseen menee siis puun
+muodostamisjärjestelmästä riippumatta yhteensä O(n) ja purku sujuu yhtä kätevästi.
+
+Tilavaativuudeksi tässä työssä muodostui pakattavan/puretun datan koko. Tilaa olisi voinut
+karsia huomattavasti mutta toteutus siten että koko dataa voidaan käsitellä kerralla oli
+huomattavasti yksinkertaisempi.
+
+PUUTTEET JA PARANNUSEHDOTUKSET
+
+Jotta toteutus olisi reaalimaailmassa käyttökelpoinen pitäisi dataa käsitellä blokeissa
+joka mahdollistaisi jättimäisten tiedostojen käsittelyn ja pitäisi tilavaatimuksen 
+järkevänä. Blokeittain muodostettava puu saattaisi auttaa pakkaamaan datan tiheämpään.
+
+LÄHTEET
+
+http://en.wikipedia.org/wiki/Huffman_coding
