@@ -10,7 +10,7 @@ OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=huffman
 
 TEST_SOURCES=tests/testmain.cpp tests/testtreenode.cpp tests/testpriorityqueue.cpp \
-			tests/testtree.cpp $(COMMON_SOURCES)
+			tests/testtree.cpp tests/testhuffman.cpp $(COMMON_SOURCES)
 TEST_OBJECTS=$(TEST_SOURCES:.cpp=.o)
 TEST_EXECUTABLE=huffman_test
 

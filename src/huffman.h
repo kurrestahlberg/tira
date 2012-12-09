@@ -45,7 +45,7 @@ private:
 	
 	Tree m_tree;
 	
-	friend class TestHuffman;
+	friend class HuffmanTester;
 };
 
 #endif
