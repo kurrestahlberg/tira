@@ -1,7 +1,7 @@
 #include "UnitTest++.h"
 #include "../treenode.h"
 
-TEST(TreeNodeTest)
+TEST(TreeNodeConstructorTestWithValues)
 {
 	unsigned char testchar = 'a';
 	unsigned int testweight = 10;
@@ -10,3 +10,13 @@ TEST(TreeNodeTest)
 	CHECK_EQUAL(node.value, testchar);
 	CHECK_EQUAL(node.weight, testweight);
 }
+
+TEST(TreeNodeConstructorTestWithoutValues)
+{
+	TreeNode node;
+	
+	CHECK_EQUAL(node.value, 0);
+	CHECK_EQUAL(node.weight, 0);
+}
+
+
